@@ -5,29 +5,34 @@
 //  Created by Leo  on 14.12.23.
 //
 
+import SwiftData
 import SwiftUI
 
 struct FriendsView: View {
+    @Environment(\.modelContext) var modelContext
     let user: User
     
     var body: some View {
         VStack(alignment: .leading){
             
-            Text(user.name)
+            Text("More about \(user.name):")
+                .font(.title)
+                .padding()
             
-            Text(String(user.age))
+            Text("My age: \(String(user.age))")
             
-            Text(user.email)
+            Text("My email: \(user.email)")
             
-            Text(user.company)
+            Text("The company I work for: \(user.company)")
             
             VStack(alignment: .leading) {
                 Text("My Friends")
-                    .font(.title.bold())
+                    .font(.title3.bold())
+                    .padding()
                 
                 ForEach(user.friends, id: \.id) { friend in
-                                    Text(friend.name)
-                                }
+                    Text(friend.name)
+                }
             }
             .padding()
         }
@@ -35,6 +40,9 @@ struct FriendsView: View {
     }
 }
 
-#Preview {
-    FriendsView(user: User(isActive: true, name: "Leo", age: 35, company: "Company", email: "email", address: "address", about: "description", registered: "register date", tags: ["ja", "nein"]))
-}
+
+
+//#Preview {
+//    FriendsView(user: User(id: UUID(), isActive: true, name: "Leo", age: 35, company: "Company", email: "email", address: "address", about: "description", registered: .now, tags: ["ja", "nein"], friends: Friend))
+//        .modelContainer(for: User.self)
+//}

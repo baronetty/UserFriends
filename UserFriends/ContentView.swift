@@ -5,10 +5,12 @@
 //  Created by Leo  on 14.12.23.
 //
 
+import SwiftData
 import SwiftUI
 
 struct ContentView: View {
-    @State private var users = [User]()
+    @Environment(\.modelContext) var modelContext
+    @Binding var users: [User]
     
     var body: some View {
         NavigationView {
@@ -53,6 +55,6 @@ struct ContentView: View {
 
 
 
-#Preview {
-    ContentView()
-}
+//#Preview {
+//    ContentView(users: .constant([User(id: UUID(), isActive: true, name: "John Doe", age: 30, company: "Company", email: "john@example.com", address: "123 Main St", about: "Lorem ipsum", registered: "2023-01-01T12:00:00Z", tags: ["tag1", "tag2"], friends: [])]))
+//}
