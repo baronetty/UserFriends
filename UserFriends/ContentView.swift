@@ -9,14 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var users = [User]()
-    let friend: Friend
     
     var body: some View {
         NavigationView {
             List {
                 ForEach(users) { user in
                     NavigationLink {
-                        FriendView(friend: friend, user: user)
+                        FriendsView(user: user)
                     } label: {
                         VStack(alignment: .leading) {
                             Text(user.name)
@@ -55,5 +54,5 @@ struct ContentView: View {
 
 
 #Preview {
-    ContentView(friend: Friend(id: UUID(), name: "John Doe"))
+    ContentView()
 }

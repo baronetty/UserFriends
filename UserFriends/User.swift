@@ -12,8 +12,12 @@ struct Data: Codable {
 }
 
 struct User: Codable, Identifiable {
-    var friends: [Friend]
+    struct Friend: Codable {
+        var id = UUID()
+        let name: String
+    }
     
+    var friends = [Friend]()
     var id = UUID()
     let isActive: Bool
     let name: String
@@ -26,10 +30,7 @@ struct User: Codable, Identifiable {
     let tags: [String]
 }
 
-struct Friend: Codable {
-    var id = UUID()
-    let name: String
-}
+
 
 
 
